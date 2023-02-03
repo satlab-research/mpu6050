@@ -52,10 +52,10 @@ void MPU6050::mpu_config()
     uint8_t buf1[] = {0x1A, 0x00};
     i2c_write_blocking(this->inst, ADDR1, buf1, 2, false);
 
-    uint8_t buf2[] = {0x1B, 0x18};
+    uint8_t buf2[] = {0x1B, 0x00};
     i2c_write_blocking(this->inst, ADDR1, buf2, 2, false);
 
-    uint8_t buf3[] = {0x1C, 0x18};
+    uint8_t buf3[] = {0x1C, 0x00};
     i2c_write_blocking(this->inst, ADDR1, buf3, 2, false);
 
 }
