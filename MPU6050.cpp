@@ -89,7 +89,7 @@ void MPU6050::mpu_read(int16_t accel[3], int16_t gyro[3])
 
 void MPU6050::mpu_read_temp(float temp)
 {
-    int8_t tem[2];    
+    uint8_t tem[2];    
     uint8_t val = 0x41;
 
     i2c_write_blocking(this->inst, ADDR1, &val, 1, true);
