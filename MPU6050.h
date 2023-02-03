@@ -22,6 +22,7 @@ class MPU6050
         bool mpu_init();
         void mpu_config();
         void mpu_read(int16_t accel[3], int16_t gyro[3]);
+        void mpu_read_temp(float temp);
 
         MPU6050(i2c_inst_t* inst, int sda, int scl);
         ~MPU6050();

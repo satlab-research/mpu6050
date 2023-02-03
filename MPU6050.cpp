@@ -63,7 +63,7 @@ void MPU6050::mpu_config()
 
 void MPU6050::mpu_read(int16_t accel[3], int16_t gyro[3])
 {
-    uint8_t buffer[6];
+    int8_t buffer[6];
 
     // Start reading acceleration registers from register 0x3B for 6 bytes
     
@@ -83,7 +83,19 @@ void MPU6050::mpu_read(int16_t accel[3], int16_t gyro[3])
     i2c_read_blocking(this->inst, ADDR1, buffer, 6, false);  // False - finished with bus
 
     for (int i = 0; i < 3; i++) {
-        gyro[i] = (buffer[i * 2] << 8 | buffer[(i * 2) + 1]);;
+        gyro[i] = (buffer[i * 2] << 8 | buffer[(i * 2) + 1]);
     }
+}
+
+void MPU6050::mpu_read_temp(float temp)
+{
+    int8_t tem[2];    
+    uint8_t val = 0x41;
+
+    i2c_write_blocking(this->inst, ADDR1, &val, 1, true);
+    i2c_read_blocking(this->inst, ADDR1, tem, 2, false);  // False - finished with bus
+    
+    temp = (tem[0]<<8|tem[1])/340 + 36.53;
+    
 }
 
