@@ -63,7 +63,7 @@ void MPU6050::mpu_config()
 
 void MPU6050::mpu_read(int16_t accel[3], int16_t gyro[3])
 {
-    int8_t buffer[6];
+    uint8_t buffer[6];
 
     // Start reading acceleration registers from register 0x3B for 6 bytes
     
