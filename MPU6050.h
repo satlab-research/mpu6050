@@ -5,7 +5,7 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
 
-#define ADDR 0x68
+#define Default_ADDR 0x68
 #define ADDR1 0x69
 
 
